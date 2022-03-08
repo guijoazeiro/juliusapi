@@ -1,3 +1,13 @@
-import { conectarServidorNoBD } from './config/db'
+import {app} from './app'
 
-conectarServidorNoBD()
+
+const PORTA = 3000;
+
+const server = app.listen(PORTA, ()=>{
+    console.log(`App ouvindo a porta ${PORTA}`)
+})
+
+process.on('SIGINT', ()=>{
+    server.close();
+    console.log('\nApp finalizado')
+})
