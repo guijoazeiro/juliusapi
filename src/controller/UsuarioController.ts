@@ -6,4 +6,9 @@ export class UsuarioController{
        const usuarioSalvo = await getManager().save(usuario)
        return usuarioSalvo
     }
+
+    async recuperarTodos(){
+        const usuarios = await getManager().find(Usuario)
+        return usuarios
+    }
 }

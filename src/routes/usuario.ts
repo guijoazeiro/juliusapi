@@ -11,3 +11,9 @@ routerUsuario.post('/', async (req: Request, res: Response) => {
     const usuarioSalvo = await usuarioCtrl.salvar(usuario)    
     res.status(200).json(usuarioSalvo)
 })
+
+
+routerUsuario.get('/', async (req: Request, res: Response) => {
+    const usuarios = await usuarioCtrl.recuperarTodos()
+    res.json(usuarios)
+})
