@@ -17,3 +17,9 @@ routerUsuario.get('/', async (req: Request, res: Response) => {
     const usuarios = await usuarioCtrl.recuperarTodos()
     res.json(usuarios)
 })
+
+routerUsuario.get('/lancamentos/:idUsuario', async (req: Request, res: Response)=>{
+    const idUsuario = parseInt(req.params.idUsuario);
+    const lancamentos = await usuarioCtrl. recuperarLancamentosDoUsuario(idUsuario)
+    res.json(lancamentos)
+})
