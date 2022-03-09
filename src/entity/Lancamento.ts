@@ -1,12 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Usuario } from "./Usuario";
 
 @Entity()
 export class Lancamento {
 
-    constructor(valor: number, descricao: string, data: Date){
+    constructor(valor: number, descricao: string, data: Date, usuario: Usuario){
         this.valor = valor;
         this.descricao = descricao;
         this.data = data;
+        this.usuario = usuario
     }
 
     @PrimaryGeneratedColumn()
@@ -20,4 +22,7 @@ export class Lancamento {
 
     @Column()
     data: Date
+
+    @ManyToOne(()=> Usuario)
+    usuario: Usuario;
 }
